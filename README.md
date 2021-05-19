@@ -1,6 +1,6 @@
 # TransTD data and code
 
-This repository contains the code package for the EMNLP'20 paper:
+This repository contains the code package for the NAACL'2021 paper:
 
 **[Technical Question Answering across Tasks and Domains](https://arxiv.org/pdf/2010.09780.pdf).** [Wenhao Yu](https://wyu97.github.io/) (ND), [Lingfei Wu](https://sites.google.com/a/email.wm.edu/teddy-lfwu/) (IBM), Yu Deng (IBM), Qingkai Zeng (ND), Ruchi Mahindru (IBM), Sinem Guven (IBM), [Meng Jiang](http://meng-jiang.com/) (ND).
 
