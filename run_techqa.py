@@ -505,7 +505,7 @@ def main():
     parser.add_argument("--fine_tune_layers", type=int, default=0, help="multiple threads for converting example to features")
     parser.add_argument("--use_cached_file", type=bool, default=False, help="you may change stride length so default as False")
 
-    parser.add_argument("--alpha", type=float, default=0.8, help="alpha control the loss ratio between reading comprehension and answer retrieval")
+    parser.add_argument("--alpha", type=float, default=1.0, help="alpha control the loss ratio between reading comprehension and answer retrieval")
 
     args = parser.parse_args()
 
