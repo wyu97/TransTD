@@ -61,7 +61,7 @@ python run_techqa.py \
     --add_doc_title_to_passage 
 ```
 
-**To reproduce our results, you can directly download our [checkpoints]() and evaluate the model.** 
+**To reproduce our results, you can directly download our [checkpoints](https://drive.google.com/drive/folders/1ZZhiB5JbnRHmB33P5ETZnPWZetjBvYd-?usp=sharing) and evaluate the model.** 
 
 We provide two checking points trained with different seeds. 
 
@@ -69,6 +69,15 @@ We provide two checking points trained with different seeds.
 | ---------- | :-----------:  | :-----------: | :-----------: | :-----------:  | ---------- | :-----------:  |
 | C1 | 58.58 | 40.28 | 52.13 | 67.18 | 65.00 | 71.25 |
 | C2 | 57.46 | 39.98 | 53.24 | 68.14 | 66.25 | 73.13 |
+
+To get the evaluation file (output a json file including all metrics), you can run:
+
+```
+python techqa_evaluation.py \
+    --data_file <PATH TO dev_Q_A.json> \
+    --output_dir <PATH TO OUTPUT FOLDER> \ 
+```
+
 
 ## Contact
 

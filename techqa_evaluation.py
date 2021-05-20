@@ -378,25 +378,39 @@ def eval_main(args):
 if __name__ == "__main__":
 
     parser = argparse.ArgumentParser()
+
+    parser.add_argument(
+        "--output_dir",
+        default=None,
+        type=str,
+        required=True,
+        help="The output directory where the model checkpoints and predictions will be written.",
+    )
+
+    parser.add_argument(
+        "--data_file",
+        default=None,
+        type=str,
+        required=True,
+        help="The input evaluation file. If a data dir is specified, will look for the file there",
+    )
+
     args = parser.parse_args()
 
-    folder_list = ['outputs_new_processor_0908_best_100prediction_alpha_1.0_stride_192_ft_0']
+    # folder_list = ['outputs_new_processor_0908_best_100prediction_alpha_1.0_stride_192_ft_0']
+    eval_outs, topks = [], []
 
-    for args.output_dir in folder_list:
+    for filename in get_all_files(args.output_dir):
+        if filename.startswith('{}/predictions_'.format(args.output_dir)):
 
-        eval_outs, topks = [], []
+            args.pred_file = filename
+            # args.data_file = 'data/dev_Q_A.json'
 
-        for filename in get_all_files(args.output_dir):
-            if filename.startswith('{}/predictions_'.format(args.output_dir)):
-
-                args.pred_file = filename
-                args.data_file = 'data/dev_Q_A.json'
-
-                out_eval = get_evaluation_result(args)
-                eval_outs.append(out_eval)
+            out_eval = get_evaluation_result(args)
+            eval_outs.append(out_eval)
                 # topks.append(topk_f1)
 
-        OPTS.out_file = args.output_dir + '_evaluation_results.json'
+    OPTS.out_file = args.output_dir + '_evaluation_results.json'
 
-        with open(OPTS.out_file, 'w') as f:
-                json.dump(eval_outs, f, indent=1)
+    with open(OPTS.out_file, 'w') as f:
+        json.dump(eval_outs, f, indent=1)
