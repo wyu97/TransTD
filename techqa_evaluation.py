@@ -364,11 +364,13 @@ def eval_main(args):
         if filename.startswith('{}/predictions_'.format(args.output_dir)):
 
             args.pred_file = filename
-            args.data_file = CUR_DIR + '/data/dev_Q_A.json'
+            args.data_file = args.predict_file
+            
+            out_eval = get_evaluation_result(args)
+            out_eval['file_name'] = filename.split('/')[-1]
+            eval_outs.append(out_eval)
 
-            eval_outs.append(get_evaluation_result(args))
-
-    OPTS.out_file = '{}/all_evals/eval_{}_stride_{}_alpha_{}_ft_{}.json'.format(CUR_DIR, args.output_dir.split('/')[-1], args.doc_stride, args.alpha, args.fine_tune_layers)
+    OPTS.out_file = args.output_dir + '_evaluation_results.json'
 
     with open(OPTS.out_file, 'w') as f:
         json.dump(eval_outs, f, indent=1)
@@ -396,18 +398,17 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    # folder_list = ['outputs_new_processor_0908_best_100prediction_alpha_1.0_stride_192_ft_0']
-    eval_outs, topks = [], []
+    eval_outs = []
 
     for filename in get_all_files(args.output_dir):
         if filename.startswith('{}/predictions_'.format(args.output_dir)):
 
             args.pred_file = filename
-            # args.data_file = 'data/dev_Q_A.json'
 
             out_eval = get_evaluation_result(args)
+            out_eval['file_name'] = filename.split('/')[-1]
             eval_outs.append(out_eval)
-                # topks.append(topk_f1)
+
 
     OPTS.out_file = args.output_dir + '_evaluation_results.json'
 
