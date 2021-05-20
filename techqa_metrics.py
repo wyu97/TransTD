@@ -238,9 +238,6 @@ def predict_output(device, eval_features: List[TechQaInputFeature], eval_dataset
 
     mi_f1, pre, rec, ma_f1, cf = calculate_precision_recall_of_document_pairness(preds, trues)
 
-    with open(output_dir + '_ps.txt', 'a') as file_log_document_pairness:
-        file_log_document_pairness.write('{}\t{}\t{}\t{}\t{}\t{}\n'.format(epoch, mi_f1, pre, rec, ma_f1, cf))
-
     predictions = dict()
     for query_id, nbest_spans_tracker in tqdm(nbest_spans_by_example_id.items(),
                                               'Formatting predictions into eval format'):

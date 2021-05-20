@@ -229,14 +229,14 @@ class MulAlbertForQuestionAnswering(AlbertForQuestionAnswering):
             span_truth = (end_positions - start_positions).float()
             span_truth[span_truth <= 0] = float("inf")
 
-            # option 1: softmax and take argmax one
+            # softmax and take argmax one!
             (_, max_start), (_, max_end) = torch.max(soft_start, dim=1), torch.max(soft_end, dim=1)
             span_pred = torch.abs((max_end - max_start) - (end_positions - start_positions)).float()
 
             weight = torch.exp(torch.min((span_pred/span_truth).float(), torch.ones(span_pred.shape).to('cuda')))
 
             ''' calculate final loss '''
-            total_loss = rc_loss + 4 * dr_loss
+            total_loss = rc_loss + 3 * dr_loss
 
             output = [total_loss,] + output
 

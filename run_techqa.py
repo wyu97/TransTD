@@ -508,8 +508,6 @@ def main():
 
     args = parser.parse_args()
 
-    args.output_dir = '{}_alpha_{}_stride_{}_ft_{}'.format(args.output_dir, args.alpha, args.doc_stride, args.fine_tune_layers)
-
     if args.doc_stride >= args.max_seq_length - args.max_query_length:
         logger.warning(
             "WARNING - You've set a doc stride which may be superior to the document length in some "
