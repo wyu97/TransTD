@@ -148,15 +148,9 @@ class MulBertForQuestionAnswering(BertForQuestionAnswering):
             (_, max_start), (_, max_end) = torch.max(soft_start, dim=1), torch.max(soft_end, dim=1)
             span_pred = torch.abs((max_end - max_start) - (end_positions - start_positions)).float()
 
-            # option 2: calculate start and end expection
-            # TODO TODO TODO
-
             weight = torch.exp(torch.min((span_pred/span_truth).float(), torch.ones(span_pred.shape).to('cuda')))
 
-            # print(weight)
             ''' calculate final loss '''
-            # print(rc_loss, dr_loss)
-            # total_loss = rc_loss + 4 * dr_loss
             total_loss = weight * rc_loss + 4 * dr_loss
 
             output = [total_loss,] + output

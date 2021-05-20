@@ -16,7 +16,6 @@ CUR_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(CUR_DIR)
 
 
-
 class EVAL_OPTS():
     def __init__(self, data_file, pred_file, out_file="", top_k=5,
                  out_image_dir=None, verbose=False):
