@@ -67,7 +67,6 @@ OUTPUT_DIRNAME_FOR_MODEL_WEIGHTS = 'pytorch_model_epoch_%d'
 
 TEXT_ENCODING = 'utf-8'
 
-
 def set_seed(args):
     random.seed(args.seed)
     np.random.seed(args.seed)

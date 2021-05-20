@@ -19,6 +19,7 @@ from torch.utils.data import TensorDataset
 
 _NEGATIVE_INFINITY = float('-inf')
 
+
 @functools.total_ordering
 class TechQAPrediction:
     def __init__(self, doc_id, start_offset, end_offset, score, is_doc, start_score, end_score):
