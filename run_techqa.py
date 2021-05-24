@@ -397,8 +397,8 @@ def main():
         "--do_lower_case", action="store_true", help="Set this flag if you are using an uncased model."
     )
 
-    parser.add_argument("--per_gpu_train_batch_size", default=10, type=int, help="Batch size per GPU/CPU for training.")
-    parser.add_argument("--predict_batch_size", default=32, type=int,
+    parser.add_argument("--per_gpu_train_batch_size", default=4, type=int, help="Batch size per GPU/CPU for training.")
+    parser.add_argument("--predict_batch_size", default=16, type=int,
                         help="Total batch size for predictions.")
     parser.add_argument("--learning_rate", default=4e-5, type=float, help="The initial learning rate for Adam.")
     parser.add_argument(
@@ -428,7 +428,7 @@ def main():
                              " Bert Adam. E.g., 0.1=10%% of training.")
     parser.add_argument("--n_best_size", default=5, type=int,
                         help="The number (each) of start/end logits to track per feature when scoring.")
-    parser.add_argument("--n_to_predict", default=100, type=int,
+    parser.add_argument("--n_to_predict", default=20, type=int,
                         help="The number of predictions to save for each "
                              "example for analysis / ensembling (aka the `k` for the top k "
                              "predictions setting). NOTE: these additional predictions are not"

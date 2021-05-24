@@ -39,6 +39,8 @@ python run_techqa.py \
     --do_eval \
     --predict_file <PATH TO dev_Q_A.json> \
     --input_corpus_file <PATH TO training_dev_technotes.json> \
+    --per_gpu_train_batch_size 4 \
+    --predict_batch_size 16 \
     --overwrite_output_dir \
     --output_dir <PATH TO OUTPUT FOLDER> \ 
     --add_doc_title_to_passage \
@@ -56,6 +58,7 @@ python run_techqa.py \
     --do_eval \
     --predict_file <PATH TO dev_Q_A.json> \
     --input_corpus_file <PATH TO training_dev_technotes.json> \
+    --predict_batch_size 16 \
     --overwrite_output_dir \
     --output_dir <PATH TO OUTPUT FOLDER> \ 
     --add_doc_title_to_passage 
